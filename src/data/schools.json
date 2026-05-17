@@ -1,0 +1,189 @@
+[
+  {
+    "id": "st_thomas",
+    "name": "St. Thomas Senior Secondary School",
+    "city": "Mandsaur",
+    "state": "Madhya Pradesh",
+    "logo": "/logos/st_thomas.png",
+    "theme": "#163a7d",
+    "nameHi": "सेंट थॉमस सीनियर सेकेंडरी स्कूल",
+    "cityHi": "मंदसौर",
+    "stateHi": "मध्य प्रदेश"
+  },
+  {
+    "id": "dvm",
+    "name": "Dashpur Vidya Mandir",
+    "city": "Mandsaur",
+    "state": "Madhya Pradesh",
+    "logo": "/logos/dvm.png",
+    "theme": "#7e22ce",
+    "nameHi": "दशपुर विद्या मंदिर",
+    "cityHi": "मंदसौर",
+    "stateHi": "मध्य प्रदेश"
+  },
+  {
+    "id": "lotus_valley",
+    "name": "Lotus Valley School",
+    "city": "Mandsaur",
+    "state": "Madhya Pradesh",
+    "logo": "/logos/lotus_valley.png",
+    "theme": "#15803d",
+    "nameHi": "लोटस वैली स्कूल",
+    "cityHi": "मंदसौर",
+    "stateHi": "मध्य प्रदेश"
+  },
+  {
+    "id": "vatsalya_school",
+    "name": "Vatsalya Public School",
+    "city": "Mandsaur",
+    "state": "Madhya Pradesh",
+    "logo": "/logos/vatsalya.png",
+    "theme": "#2563eb",
+    "nameHi": "वात्सल्य पब्लिक स्कूल",
+    "cityHi": "मंदसौर",
+    "stateHi": "मध्य प्रदेश"
+  },
+  {
+    "id": "saraswati_vidhya_mandir",
+    "name": "Saraswati Vidhya Mandir Higher Secondary School",
+    "city": "Mandsaur",
+    "state": "Madhya Pradesh",
+    "logo": "/logos/saraswati_vidhya_mandir.png",
+    "theme": "#b45309",
+    "nameHi": "सरस्वती विद्या मंदिर उच्चतर माध्यमिक विद्यालय",
+    "cityHi": "मंदसौर",
+    "stateHi": "मध्य प्रदेश"
+  },
+  {
+    "id": "dps_mandsaur",
+    "name": "Delhi Public School Mandsaur",
+    "city": "Mandsaur",
+    "state": "Madhya Pradesh",
+    "logo": "/logos/dps_mandsaur.png",
+    "theme": "#0b7a3d",
+    "nameHi": "दिल्ली पब्लिक स्कूल मंदसौर",
+    "cityHi": "मंदसौर",
+    "stateHi": "मध्य प्रदेश"
+  },
+  {
+    "id": "jain_public",
+    "name": "Jain Public School",
+    "city": "Mandsaur",
+    "state": "Madhya Pradesh",
+    "logo": "/logos/jain_public.png",
+    "theme": "#8b0000",
+    "nameHi": "जैन पब्लिक स्कूल",
+    "cityHi": "मंदसौर",
+    "stateHi": "मध्य प्रदेश"
+  },
+  {
+    "id": "mandsaur_international",
+    "name": "Mandsaur International School",
+    "city": "Mandsaur",
+    "state": "Madhya Pradesh",
+    "logo": "/logos/mandsaur_international.png",
+    "theme": "#1e40af",
+    "nameHi": "मंदसौर इंटरनेशनल स्कूल",
+    "cityHi": "मंदसौर",
+    "stateHi": "मध्य प्रदेश"
+  },
+  {
+    "id": "edify_mandsaur",
+    "name": "Edify School Mandsaur",
+    "city": "Mandsaur",
+    "state": "Madhya Pradesh",
+    "logo": "/logos/edify.png",
+    "theme": "#6b21a8",
+    "nameHi": "एडीफाई स्कूल मंदसौर",
+    "cityHi": "मंदसौर",
+    "stateHi": "मध्य प्रदेश"
+  },
+  {
+    "id": "karni_international",
+    "name": "Karni International School",
+    "city": "Mandsaur",
+    "state": "Madhya Pradesh",
+    "logo": "/logos/karni.png",
+    "theme": "#7c2d12",
+    "nameHi": "करणी इंटरनेशनल स्कूल",
+    "cityHi": "मंदसौर",
+    "stateHi": "मध्य प्रदेश"
+  },
+  {
+    "id": "guru_pratap",
+    "name": "Guru Pratap School",
+    "city": "Mandsaur",
+    "state": "Madhya Pradesh",
+    "logo": "/logos/guru_pratap.png",
+    "theme": "#0f766e",
+    "nameHi": "गुरु प्रताप स्कूल",
+    "cityHi": "मंदसौर",
+    "stateHi": "मध्य प्रदेश"
+  },
+  {
+    "id": "sunrise_universal",
+    "name": "Sunrise Universal School",
+    "city": "Mandsaur",
+    "state": "Madhya Pradesh",
+    "logo": "/logos/sunrise_universal.png",
+    "theme": "#ea580c",
+    "nameHi": "सनराइज यूनिवर्सल स्कूल",
+    "cityHi": "मंदसौर",
+    "stateHi": "मध्य प्रदेश"
+  },
+  {
+    "id": "subhash_english",
+    "name": "Subhash English Higher Secondary School",
+    "city": "Mandsaur",
+    "state": "Madhya Pradesh",
+    "logo": "/logos/subhash_english.png",
+    "theme": "#1d4ed8",
+    "nameHi": "सुभाष इंग्लिश हायर सेकेंडरी स्कूल",
+    "cityHi": "मंदसौर",
+    "stateHi": "मध्य प्रदेश"
+  },
+  {
+    "id": "ns_singhvi",
+    "name": "N.S. Singhvi Higher Secondary School",
+    "city": "Mandsaur",
+    "state": "Madhya Pradesh",
+    "logo": "/logos/ns_singhvi.png",
+    "theme": "#374151",
+    "nameHi": "एन.एस. सिंघवी हायर सेकेंडरी स्कूल",
+    "cityHi": "मंदसौर",
+    "stateHi": "मध्य प्रदेश"
+  },
+  {
+    "id": "ebenezer",
+    "name": "Ebenezer English Higher Secondary School",
+    "city": "Mandsaur",
+    "state": "Madhya Pradesh",
+    "logo": "/logos/ebenezer.png",
+    "theme": "#991b1b",
+    "nameHi": "एबेनेज़र इंग्लिश हायर सेकेंडरी स्कूल",
+    "cityHi": "मंदसौर",
+    "stateHi": "मध्य प्रदेश"
+  },
+  {
+    "id": "st_kabir",
+    "name": "St. Kabir Public School",
+    "city": "Mandsaur",
+    "state": "Madhya Pradesh",
+    "logo": "/logos/st_kabir.png",
+    "theme": "#2563eb",
+    "nameHi": "सेंट कबीर पब्लिक स्कूल",
+    "cityHi": "मंदसौर",
+    "stateHi": "मध्य प्रदेश"
+  },
+  {
+    "id": "sai_public",
+    "name": "Shri Sai Public School",
+    "city": "Mandsaur",
+    "state": "Madhya Pradesh",
+    "logo": "/logos/sai_public.png",
+    "theme": "#0f172a",
+    "nameHi": "श्री साई पब्लिक स्कूल",
+    "cityHi": "मंदसौर",
+    "stateHi": "मध्य प्रदेश"
+  }
+]

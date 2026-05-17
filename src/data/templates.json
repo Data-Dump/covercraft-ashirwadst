@@ -1,0 +1,26 @@
+[
+  {
+    "id": "classic",
+    "name": "Classic CBSE",
+    "description": "Traditional academic style with elegant borders",
+    "preview": "classic"
+  },
+  {
+    "id": "modern",
+    "name": "Modern Minimal",
+    "description": "Clean modern design with accent lines",
+    "preview": "modern"
+  },
+  {
+    "id": "royal",
+    "name": "Royal Academic",
+    "description": "Prestigious look with ornate styling",
+    "preview": "royal"
+  },
+  {
+    "id": "gradient",
+    "name": "Gradient Accent",
+    "description": "Contemporary design with gradient header",
+    "preview": "gradient"
+  }
+]
