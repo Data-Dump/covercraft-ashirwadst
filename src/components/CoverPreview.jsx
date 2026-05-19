@@ -116,7 +116,7 @@ const Logo = ({ school, customLogo, sizeCqw, color }) => {
   return (
     <div style={{ width: sz, height: sz, flexShrink: 0 }}>
       {src
-        ? <img src={src} alt="logo" style={{ width: sz, height: sz, objectFit: 'contain' }}
+        ? <img key={src} src={src} alt="logo" style={{ width: sz, height: sz, objectFit: 'contain' }}
             onError={e => { e.target.style.display = 'none'; }} />
         : <div style={{
             width: sz, height: sz, borderRadius: '50%', background: color,

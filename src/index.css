@@ -537,14 +537,67 @@ body {
 
 /* ── Print styles ────────────────────────────────────────── */
 @media print {
-  body * { visibility: hidden; }
-  #print-target, #print-target * { visibility: visible; }
-  #print-target {
-    position: absolute; inset: 0;
-    width: 210mm; height: 297mm;
-    overflow: hidden;
+  /* Hide all UI chrome */
+  .app-header,
+  .form-panel,
+  .preview-toolbar,
+  .page-label-bar,
+  .page-dl-btn,
+  .preview-hint-text,
+  .btn { display: none !important; }
+
+  /* Reset layout wrappers */
+  html, body {
+    margin: 0 !important;
+    padding: 0 !important;
+    background: white !important;
+    height: auto !important;
   }
+  .app-shell {
+    display: block !important;
+    grid-template-rows: none !important;
+    min-height: auto !important;
+  }
+  .main-content {
+    display: block !important;
+    height: auto !important;
+    overflow: visible !important;
+    grid-template-columns: none !important;
+  }
+  .preview-panel {
+    display: block !important;
+    background: white !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    height: auto !important;
+    overflow: visible !important;
+    gap: 0 !important;
+    align-items: stretch !important;
+  }
+
+  /* Each A4 page = one print page */
+  .a4-wrapper {
+    max-width: 100% !important;
+    width: 210mm !important;
+    margin: 0 !important;
+    page-break-after: always !important;
+    break-after: page !important;
+  }
+  .a4-paper {
+    width: 210mm !important;
+    height: 297mm !important;
+    aspect-ratio: unset !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    overflow: hidden !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  /* Editable spans look normal in print */
+  .ef { outline: none !important; background: transparent !important; }
 }
+
 
 /* ── Login Screen ───────────────────────────────────────── */
 .login-wrapper {

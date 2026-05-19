@@ -12,12 +12,12 @@
   },
   {
     "id": "dvm",
-    "name": "Dashpur Vidya Mandir",
+    "name": "Dashpur Vidyalaya",
     "city": "Mandsaur",
     "state": "Madhya Pradesh",
     "logo": "/logos/dvm.png",
     "theme": "#7e22ce",
-    "nameHi": "दशपुर विद्या मंदिर",
+    "nameHi": "दशपुर विद्यालय",
     "cityHi": "मंदसौर",
     "stateHi": "मध्य प्रदेश"
   },

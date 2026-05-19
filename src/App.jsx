@@ -15,18 +15,21 @@ const DEFAULT_DATA = {
   session: '',
   themeColor: schoolsData[0].theme,
   logoSizeScale: 1.0,
+  // Acknowledgement editable text
+  ackTitle: '', ackBody: '', ackStudentLabel: '', ackTeacherLabel: '',
+  // Certificate editable text
+  certTitle: '', certIntroText: '', certBody: '',
+  certInternalLabel: '', certExternalLabel: '',
+  certForwardedLabel: '', certPrincipalLabel: '',
 };
 
 export const DEFAULT_FONT_SIZES = {
-  schoolName: 4.8,
-  address: 2.2,
-  subject: 4.2,
-  projectTitle: 7.0,
-  studentName: 3.2,
-  classSection: 2.4,
-  facultyName: 3.2,
-  session: 2.4,
-  description: 2.6,
+  schoolName: 4.8, address: 2.2, subject: 4.2, projectTitle: 7.0,
+  studentName: 3.2, classSection: 2.4, facultyName: 3.2, session: 2.4, description: 2.6,
+  // Acknowledgement
+  ackTitle: 5.0, ackBody: 2.8, ackSigs: 2.4,
+  // Certificate
+  certTitle: 4.8, certIntro: 2.6, certProjectTitle: 3.8, certBody: 2.8, certSigs: 2.5, certForwarded: 2.5,
 };
 
 function Toast({ id, message, type, onRemove }) {
