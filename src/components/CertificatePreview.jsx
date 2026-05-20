@@ -45,7 +45,7 @@ const Logo = ({ school, customLogo, sizeCqw, color }) => {
   );
 };
 
-const CertificatePreview = forwardRef(({ data, selectedSchool, customLogo, template, onInlineEdit, fontSizes, onFontSizeChange }, ref) => {
+const CertificatePreview = forwardRef(({ data, selectedSchool, customLogo, template, onInlineEdit, fontSizes, onFontSizeChange, language }, ref) => {
   const [activeField, setActiveField] = useState(null);
   const color = data.themeColor || selectedSchool?.theme || '#1e3a8a';
   const scale = data.logoSizeScale || 1.0;
@@ -68,7 +68,31 @@ const CertificatePreview = forwardRef(({ data, selectedSchool, customLogo, templ
   const session = data.session || '20____ \u2013 20____';
   const schoolDisplay = `${selectedSchool?.name || 'School Name'}${selectedSchool?.address ? `, ${selectedSchool.address}` : ''}`;
 
-  const defaultCertBody = `has been successfully completed by ${studentName}, student of ${classSection}, during the academic session ${session}, under my guidance and supervision. The work submitted is original and fulfills the requirements prescribed by the school curriculum. To the best of my knowledge, this project has not been copied from any other source and reflects the sincere efforts of the student. I wish the student success in all future academic endeavors.`;
+  const TRANSLATIONS = {
+    en: {
+      certTitle: 'Certificate',
+      certIntroText: 'This is to certify that the project work entitled',
+      certBody: `has been successfully completed by ${studentName}, student of ${classSection}, during the academic session ${session}, under my guidance and supervision. The work submitted is original and fulfills the requirements prescribed by the school curriculum. To the best of my knowledge, this project has not been copied from any other source and reflects the sincere efforts of the student. I wish the student success in all future academic endeavors.`,
+      certInternalLabel: 'Signature of',
+      certInternalExaminer: 'Internal Examiner',
+      certExternalLabel: 'Signature of',
+      certExternalExaminer: 'External Examiner',
+      certForwardedLabel: 'Forwarded by',
+      certPrincipalLabel: 'Principal'
+    },
+    hi: {
+      certTitle: 'प्रमाण पत्र',
+      certIntroText: 'यह प्रमाणित किया जाता है कि परियोजना कार्य जिसका शीर्षक',
+      certBody: `को ${studentName}, ${classSection} के छात्र द्वारा, मेरे मार्गदर्शन और पर्यवेक्षण के तहत शैक्षणिक सत्र ${session} के दौरान सफलतापूर्वक पूरा किया गया है। प्रस्तुत किया गया कार्य मूल है और स्कूल पाठ्यक्रम द्वारा निर्धारित आवश्यकताओं को पूरा करता है। मेरी सर्वोत्तम जानकारी के अनुसार, यह परियोजना किसी अन्य स्रोत से कॉपी नहीं की गई है और छात्र के सच्चे प्रयासों को दर्शाती है। मैं छात्र को भविष्य के सभी शैक्षणिक प्रयासों में सफलता की कामना करता हूँ।`,
+      certInternalLabel: 'हस्ताक्षर',
+      certInternalExaminer: 'आंतरिक परीक्षक',
+      certExternalLabel: 'हस्ताक्षर',
+      certExternalExaminer: 'बाह्य परीक्षक',
+      certForwardedLabel: 'अग्रसारित',
+      certPrincipalLabel: 'प्राचार्य'
+    }
+  };
+  const t = TRANSLATIONS[language || 'en'];
 
   const E = (field, def, sizeKey, block = false, style = {}) => (
     <EditField key={field} fieldKey={field} value={data[field] || def} sizeCqw={sz(sizeKey || field)} onEdit={edit} onActivate={setActiveField} block={block} style={style} />
@@ -76,38 +100,38 @@ const CertificatePreview = forwardRef(({ data, selectedSchool, customLogo, templ
 
   const renderContent = () => (
     <>
-      <div style={{ textAlign: 'center', marginBottom: '1.8cqw' }}>
-        {E('certTitle', 'Certificate', 'certTitle', false, { fontWeight: 800, letterSpacing: '0.1em', textTransform: 'uppercase', color, display: 'block' })}
+      <div style={{ textAlign: 'center', marginBottom: isBand ? '1.8cqw' : '1.2cqw' }}>
+        {E('certTitle', t.certTitle, 'certTitle', false, { fontWeight: 800, letterSpacing: '0.1em', textTransform: 'uppercase', color, display: 'block' })}
         <div style={{ width: '40%', height: '0.3cqw', background: color, margin: '0.8cqw auto 0' }} />
       </div>
-      <div style={{ textAlign: 'center', marginBottom: '1.5cqw' }}>
-        {E('certIntroText', 'This is to certify that the project work entitled', 'certIntro', false, { fontStyle: 'italic', color: '#555', display: 'block', textAlign: 'center' })}
+      <div style={{ textAlign: 'center', marginBottom: isBand ? '1.5cqw' : '1cqw' }}>
+        {E('certIntroText', t.certIntroText, 'certIntro', false, { fontStyle: 'italic', color: '#555', display: 'block', textAlign: 'center' })}
       </div>
-      <div style={{ textAlign: 'center', border: `0.2cqw solid ${color}55`, borderRadius: '1cqw', padding: '1cqw 3cqw', marginBottom: '1.5cqw', background: `${color}08` }}>
+      <div style={{ textAlign: 'center', border: `0.2cqw solid ${color}55`, borderRadius: '1cqw', padding: isBand ? '1cqw 3cqw' : '0.8cqw 2.5cqw', marginBottom: isBand ? '1.5cqw' : '1cqw', background: `${color}08` }}>
         <span style={{ fontSize: `${sz('certProjectTitle')}cqw`, fontWeight: 800, color, fontFamily: "'Playfair Display',serif", fontStyle: 'italic' }}>
           &ldquo;<EditField fieldKey="projectTitle" value={data.projectTitle || projectTitle} sizeCqw={sz('certProjectTitle')} onEdit={edit} onActivate={setActiveField} style={{ fontWeight: 800, color, fontFamily: "'Playfair Display',serif", fontStyle: 'italic' }} />&rdquo;
         </span>
       </div>
       <div style={{ textAlign: 'justify', textIndent: '5cqw' }}>
-        {E('certBody', defaultCertBody, 'certBody', true, { color: '#222', lineHeight: 1.85, fontWeight: 400 })}
+        {E('certBody', t.certBody, 'certBody', true, { color: '#222', lineHeight: isBand ? 1.85 : 1.7, fontWeight: 400 })}
       </div>
       <div style={{ flex: 1 }} />
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2cqw', marginTop: '4cqw', marginBottom: '3cqw' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2cqw', marginTop: isBand ? '4cqw' : '2.5cqw', marginBottom: isBand ? '3cqw' : '1.5cqw' }}>
         <div>
-          {E('certInternalLabel', 'Signature of', 'certSigs', false, { display: 'block', fontWeight: 700, marginBottom: '5cqw' })}
+          {E('certInternalLabel', t.certInternalLabel, 'certSigs', false, { display: 'block', fontWeight: 700, marginBottom: isBand ? '5cqw' : '3cqw' })}
           <div style={{ borderBottom: `0.15cqw solid ${color}`, width: '80%', marginBottom: '0.8cqw' }} />
-          {E('certInternalExaminer', 'Internal Examiner', 'certSigs', false, { fontWeight: 700 })}
+          {E('certInternalExaminer', t.certInternalExaminer, 'certSigs', false, { fontWeight: 700 })}
         </div>
         <div style={{ textAlign: 'right' }}>
-          {E('certExternalLabel', 'Signature of', 'certSigs', false, { display: 'block', fontWeight: 700, marginBottom: '5cqw' })}
+          {E('certExternalLabel', t.certExternalLabel, 'certSigs', false, { display: 'block', fontWeight: 700, marginBottom: isBand ? '5cqw' : '3cqw' })}
           <div style={{ borderBottom: `0.15cqw solid ${color}`, width: '80%', marginLeft: 'auto', marginBottom: '0.8cqw' }} />
-          {E('certExternalExaminer', 'External Examiner', 'certSigs', false, { fontWeight: 700 })}
+          {E('certExternalExaminer', t.certExternalExaminer, 'certSigs', false, { fontWeight: 700 })}
         </div>
       </div>
-      <div style={{ textAlign: 'center', borderTop: `0.15cqw solid ${color}33`, paddingTop: '2.5cqw' }}>
-        {E('certForwardedLabel', 'Forwarded by', 'certForwarded', false, { display: 'block', color: '#555', marginBottom: '4cqw' })}
+      <div style={{ textAlign: 'center', borderTop: `0.15cqw solid ${color}33`, paddingTop: isBand ? '2.5cqw' : '1.5cqw' }}>
+        {E('certForwardedLabel', t.certForwardedLabel, 'certForwarded', false, { display: 'block', color: '#555', marginBottom: isBand ? '4cqw' : '2cqw' })}
         <div style={{ borderBottom: `0.15cqw solid ${color}`, width: '45%', margin: '0 auto 0.8cqw' }} />
-        {E('certPrincipalLabel', 'Principal', 'certForwarded', false, { display: 'block', fontWeight: 700 })}
+        {E('certPrincipalLabel', t.certPrincipalLabel, 'certForwarded', false, { display: 'block', fontWeight: 700 })}
         <div style={{ fontSize: `${sz('certForwarded') * 0.88}cqw`, color: '#555', marginTop: '0.3cqw' }}>{schoolDisplay}</div>
       </div>
       {isRoyal && <div style={{ fontSize: '2.5cqw', color, paddingTop: '0.5cqw', textAlign: 'center' }}>✦ ✦ ✦</div>}
@@ -119,7 +143,7 @@ const CertificatePreview = forwardRef(({ data, selectedSchool, customLogo, templ
     return (
       <div className="a4-wrapper">
         <FloatingToolbar active={activeField} fontSizes={fontSizes} onSizeChange={onFontSizeChange} />
-        <div className="a4-paper" ref={ref} style={{ fontFamily: "'Times New Roman',Georgia,serif", display: 'flex', flexDirection: 'column', background: '#fff' }}>
+        <div className="a4-paper" ref={ref} style={{ fontFamily: language === 'hi' ? "'Mukta', 'Inter', 'Times New Roman', serif" : "'Times New Roman',Georgia,serif", display: 'flex', flexDirection: 'column', background: '#fff' }}>
           <div style={{ background: bg, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '1cqw', padding: '2cqw 6%' }}>
             <Logo school={selectedSchool} customLogo={customLogo} sizeCqw={9 * scale} color="#fff" />
             <div style={{ fontWeight: 700, color: '#fff', textAlign: 'center', fontSize: '4.2cqw', lineHeight: 1.2 }}>{selectedSchool?.name || 'School Name'}</div>
@@ -137,7 +161,7 @@ const CertificatePreview = forwardRef(({ data, selectedSchool, customLogo, templ
   return (
     <div className="a4-wrapper">
       <FloatingToolbar active={activeField} fontSizes={fontSizes} onSizeChange={onFontSizeChange} />
-      <div className="a4-paper" ref={ref} style={{ fontFamily: "'Times New Roman',Georgia,serif", position: 'relative', background: '#fff' }}>
+      <div className="a4-paper" ref={ref} style={{ fontFamily: language === 'hi' ? "'Mukta', 'Inter', 'Times New Roman', serif" : "'Times New Roman',Georgia,serif", position: 'relative', background: '#fff' }}>
         <div style={{ position: 'absolute', inset: '2%', border: `0.5cqw ${isRoyal ? 'double' : 'solid'} ${color}`, pointerEvents: 'none' }} />
         <div style={{ position: 'absolute', inset: '3.2%', border: `0.15cqw solid ${color}44`, pointerEvents: 'none' }} />
         <div style={{ position: 'absolute', inset: '6%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>

@@ -45,7 +45,7 @@ const Logo = ({ school, customLogo, sizeCqw, color }) => {
   );
 };
 
-const AcknowledgementPreview = forwardRef(({ data, selectedSchool, customLogo, template, onInlineEdit, fontSizes, onFontSizeChange }, ref) => {
+const AcknowledgementPreview = forwardRef(({ data, selectedSchool, customLogo, template, onInlineEdit, fontSizes, onFontSizeChange, language }, ref) => {
   const [activeField, setActiveField] = useState(null);
   const color = data.themeColor || selectedSchool?.theme || '#1e3a8a';
   const scale = data.logoSizeScale || 1.0;
@@ -59,7 +59,21 @@ const AcknowledgementPreview = forwardRef(({ data, selectedSchool, customLogo, t
   const classSection = data.classSection || 'Class XII';
   const studentName = data.studentName || 'Student Name';
 
-  const defaultBody = `I would like to express my sincere gratitude to my subject teacher, ${facultyName}, school authorities, and parents for their valuable guidance, encouragement, and support throughout the completion of this ${classSection} project work. Their continuous motivation and constructive suggestions helped me successfully complete this project in a disciplined and systematic manner.\n\nI am also thankful to all those who directly or indirectly contributed towards the successful completion of this project. The experience gained during the preparation of this work has enhanced my understanding of ${subject} and improved my practical knowledge.\n\nLastly, I would like to thank my friends and classmates for their cooperation and assistance whenever required.`;
+  const TRANSLATIONS = {
+    en: {
+      ackTitle: 'Acknowledgement',
+      ackBody: `I would like to express my sincere gratitude to my subject teacher, ${facultyName}, school authorities, and parents for their valuable guidance, encouragement, and support throughout the completion of this ${classSection} project work. Their continuous motivation and constructive suggestions helped me successfully complete this project in a disciplined and systematic manner.\n\nI am also thankful to all those who directly or indirectly contributed towards the successful completion of this project. The experience gained during the preparation of this work has enhanced my understanding of ${subject} and improved my practical knowledge.\n\nLastly, I would like to thank my friends and classmates for their cooperation and assistance whenever required.`,
+      ackStudentLabel: "Student's Signature",
+      ackTeacherLabel: "Teacher's Signature"
+    },
+    hi: {
+      ackTitle: 'आभार',
+      ackBody: `मैं अपने विषय शिक्षक ${facultyName}, विद्यालय अधिकारियों और अपने माता-पिता के प्रति इस ${classSection} परियोजना कार्य को पूरा करने में उनके बहुमूल्य मार्गदर्शन, प्रोत्साहन और सहयोग के लिए अपनी हार्दिक कृतज्ञता व्यक्त करना चाहता हूँ। उनकी निरंतर प्रेरणा और रचनात्मक सुझावों ने मुझे इस परियोजना को अनुशासित और व्यवस्थित तरीके से सफलतापूर्वक पूरा करने में मदद की।\n\nमैं उन सभी लोगों का भी आभारी हूँ जिन्होंने इस परियोजना को सफलतापूर्वक पूरा करने में प्रत्यक्ष या अप्रत्यक्ष रूप से योगदान दिया। इस कार्य को तैयार करने के दौरान प्राप्त अनुभव ने ${subject} के बारे में मेरी समझ को बढ़ाया है और मेरे व्यावहारिक ज्ञान में सुधार किया है।\n\nअंत में, मैं अपने दोस्तों और सहपाठियों को उनकी सहयोग और सहायता के लिए धन्यवाद देना चाहता हूँ जब भी इसकी आवश्यकता हुई।`,
+      ackStudentLabel: 'छात्र के हस्ताक्षर',
+      ackTeacherLabel: 'शिक्षक के हस्ताक्षर'
+    }
+  };
+  const t = TRANSLATIONS[language || 'en'];
 
   const E = (field, def, sizeKey, block = false, style = {}) => (
     <EditField key={field} fieldKey={field} value={data[field] || def} sizeCqw={sz(sizeKey || field)} onEdit={edit} onActivate={setActiveField} block={block} style={style} />
@@ -67,23 +81,23 @@ const AcknowledgementPreview = forwardRef(({ data, selectedSchool, customLogo, t
 
   const renderContent = () => (
     <>
-      <div style={{ textAlign: 'center', marginBottom: '2cqw' }}>
-        {E('ackTitle', 'Acknowledgement', 'ackTitle', false, { fontWeight: 800, letterSpacing: '0.1em', textTransform: 'uppercase', color, display: 'block' })}
+      <div style={{ textAlign: 'center', marginBottom: isBand ? '2cqw' : '1.2cqw' }}>
+        {E('ackTitle', t.ackTitle, 'ackTitle', false, { fontWeight: 800, letterSpacing: '0.1em', textTransform: 'uppercase', color, display: 'block' })}
         <div style={{ width: '40%', height: '0.3cqw', background: color, margin: '1cqw auto 0' }} />
       </div>
       <div style={{ flex: 1, width: '100%', textAlign: 'left' }}>
-        {E('ackBody', defaultBody, 'ackBody', true, { color: '#222', textAlign: 'justify', lineHeight: 1.85, fontWeight: 400 })}
+        {E('ackBody', t.ackBody, 'ackBody', true, { color: '#222', textAlign: 'justify', lineHeight: isBand ? 1.85 : 1.7, fontWeight: 400 })}
       </div>
       <div style={{ width: '100%', marginTop: 'auto', paddingTop: '1.5cqw' }}>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr' }}>
           <div>
-            {E('ackStudentLabel', "Student's Signature", 'ackSigs', false, { display: 'block', color: '#555' })}
-            <div style={{ borderBottom: `0.15cqw solid ${color}`, width: '75%', margin: '4cqw 0 0.8cqw' }} />
+            {E('ackStudentLabel', t.ackStudentLabel, 'ackSigs', false, { display: 'block', color: '#555' })}
+            <div style={{ borderBottom: `0.15cqw solid ${color}`, width: '75%', margin: isBand ? '4cqw 0 0.8cqw' : '2.5cqw 0 0.8cqw' }} />
             {E('studentName', studentName, 'ackSigs', false, { fontWeight: 700 })}
           </div>
           <div style={{ textAlign: 'right' }}>
-            {E('ackTeacherLabel', "Teacher's Signature", 'ackSigs', false, { display: 'block', color: '#555' })}
-            <div style={{ borderBottom: `0.15cqw solid ${color}`, width: '75%', margin: '4cqw 0 0.8cqw', marginLeft: 'auto' }} />
+            {E('ackTeacherLabel', t.ackTeacherLabel, 'ackSigs', false, { display: 'block', color: '#555' })}
+            <div style={{ borderBottom: `0.15cqw solid ${color}`, width: '75%', margin: isBand ? '4cqw 0 0.8cqw' : '2.5cqw 0 0.8cqw', marginLeft: 'auto' }} />
             {E('facultyName', facultyName, 'ackSigs', false, { fontWeight: 700 })}
           </div>
         </div>
@@ -97,7 +111,7 @@ const AcknowledgementPreview = forwardRef(({ data, selectedSchool, customLogo, t
     return (
       <div className="a4-wrapper">
         <FloatingToolbar active={activeField} fontSizes={fontSizes} onSizeChange={onFontSizeChange} />
-        <div className="a4-paper" ref={ref} style={{ fontFamily: "'Times New Roman',Georgia,serif", display: 'flex', flexDirection: 'column', background: '#fff' }}>
+        <div className="a4-paper" ref={ref} style={{ fontFamily: language === 'hi' ? "'Mukta', 'Inter', 'Times New Roman', serif" : "'Times New Roman',Georgia,serif", display: 'flex', flexDirection: 'column', background: '#fff' }}>
           <div style={{ background: bg, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '1cqw', padding: '2.5cqw 6%' }}>
             <Logo school={selectedSchool} customLogo={customLogo} sizeCqw={10 * scale} color="#fff" />
             <div style={{ fontWeight: 700, color: '#fff', textAlign: 'center', fontSize: '4.2cqw', lineHeight: 1.2 }}>{selectedSchool?.name || 'School Name'}</div>
@@ -115,7 +129,7 @@ const AcknowledgementPreview = forwardRef(({ data, selectedSchool, customLogo, t
   return (
     <div className="a4-wrapper">
       <FloatingToolbar active={activeField} fontSizes={fontSizes} onSizeChange={onFontSizeChange} />
-      <div className="a4-paper" ref={ref} style={{ fontFamily: "'Times New Roman',Georgia,serif", position: 'relative', background: '#fff' }}>
+      <div className="a4-paper" ref={ref} style={{ fontFamily: language === 'hi' ? "'Mukta', 'Inter', 'Times New Roman', serif" : "'Times New Roman',Georgia,serif", position: 'relative', background: '#fff' }}>
         <div style={{ position: 'absolute', inset: '2%', border: `0.5cqw ${isRoyal ? 'double' : 'solid'} ${color}`, pointerEvents: 'none' }} />
         <div style={{ position: 'absolute', inset: '3.2%', border: `0.15cqw solid ${color}44`, pointerEvents: 'none' }} />
         <div style={{ position: 'absolute', inset: '6%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>

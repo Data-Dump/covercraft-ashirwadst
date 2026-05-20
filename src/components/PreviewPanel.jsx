@@ -150,6 +150,7 @@ export default function PreviewPanel({ data, customLogo, template, onReset, addT
         onInlineEdit={onInlineEdit}
         fontSizes={fontSizes}
         onFontSizeChange={onFontSizeChange}
+        language={language}
       />
       <div className="page-dl-btn" style={{ width: '100%', maxWidth: 600 }}>
         <button className="btn btn-ghost btn-sm" style={{ width: '100%', marginTop: '0.3rem' }}
@@ -169,6 +170,7 @@ export default function PreviewPanel({ data, customLogo, template, onReset, addT
         onInlineEdit={onInlineEdit}
         fontSizes={fontSizes}
         onFontSizeChange={onFontSizeChange}
+        language={language}
       />
       <div className="page-dl-btn" style={{ width: '100%', maxWidth: 600 }}>
         <button className="btn btn-ghost btn-sm" style={{ width: '100%', marginTop: '0.3rem' }}
